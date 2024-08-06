@@ -34,6 +34,7 @@ Wilson Lee
 - [Github](https://github.com/estercade)
 
 ## Credits
+- [PokeAPI](https://pokeapi.co/)
 
 ## Acknowledgments
 

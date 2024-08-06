@@ -1,0 +1,14 @@
+/* Project Memory Card stylesheet */
+
+/* reset browser defaults */
+* {
+  padding: 0;
+  margin: 0;
+  border: 1px solid red;
+}
+
+.cardContainer {
+  display: flex;
+  max-width: 450px;
+  flex-wrap: wrap;
+}
