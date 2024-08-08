@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fetchData from '../hooks/fetchData.js';
+import fetchData from './fetchData.js';
 import Card from './Card.jsx';
 
 function Gameboard() {
