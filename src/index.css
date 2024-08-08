@@ -12,3 +12,12 @@
   max-width: 450px;
   flex-wrap: wrap;
 }
+
+.card {
+  display: inline-block;
+  min-width: 98px;
+}
+
+img {
+  float: left;
+}
