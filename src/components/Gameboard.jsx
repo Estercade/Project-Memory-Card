@@ -1,52 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import fetchData from '../hooks/fetchData.js';
 import Card from './Card.jsx';
 
 function Gameboard() {
-    const [randomIdArray, setRandomIdArray] = useState([1, 4, 7]);
-    const [cardsArray, setCardsArray] = useState([]);
-    const [count, setCount] = useState(randomIdArray.length);
+    const [count, setCount] = useState(3);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
+    const [pokemonArray, setPokemonArray] = useState([]);
 
     function generateNewCards() {
         let randomSet = new Set([]);
         while (randomSet.size < count) {
             randomSet.add(Math.ceil(Math.random() * 150).toString());
         }
-        let newCardsArray = [];
-        let randomArray = Array.from(randomSet);
-        randomArray.map((id) => {
-            newCardsArray.push(<Card queryId={id} key={id} setScore={setScore} generateNewCards={generateNewCards} />)
-        })
-        setCardsArray(newCardsArray);
+        let randomIds = (Array.from(randomSet));
+        fetchData(randomIds, setPokemonArray);
         setScore(0);
     }
 
-    function handleShuffleCards() {
-        let newCardsArray = []
-        for (let i = cardsArray.length - 1; i >= 0; i--) {
+    function shuffleCards() {
+        let oldArray = pokemonArray;
+        let newArray = [];
+        for (let i = oldArray.length - 1; i >= 0; i--) {
             let rand = Math.floor(Math.random() * i);
-            newCardsArray.push(cardsArray[rand]);
-            cardsArray[rand] = cardsArray[i];
+            newArray.push(oldArray[rand]);
+            oldArray[rand] = oldArray[i];
         }
-        setCardsArray(newCardsArray);
+        setPokemonArray(newArray);
     }
-
-    useEffect(() => {
-        let newCardsArray = []
-        for (let i = cardsArray.length - 1; i >= 0; i--) {
-            let rand = Math.floor(Math.random() * i);
-            newCardsArray.push(cardsArray[rand]);
-            cardsArray[rand] = cardsArray[i];
-        }
-        setCardsArray(newCardsArray);
-    }, [score]);
 
     function handleCardCountChange(e) {
         setCount(e.target.value);
     }
 
     useEffect(() => {
+        generateNewCards();
+    }, []);
+
+    useEffect(() => {
+        shuffleCards();
         if (score > highScore) {
             setHighScore(score);
         }
@@ -66,14 +58,17 @@ function Gameboard() {
                 <div className="scoreboard">Current score: {score}</div>
                 <div className="highScore">High score: {highScore}</div>
             </div>
-            <button type="button" onClick={handleShuffleCards}>Shuffle</button>
             <div className="cardCountInputContainer">
                 <label htmlFor="cardCountInput">Card count: </label>
                 <input id="cardCountInput" value={count} onChange={handleCardCountChange}></input>
                 <button type="button" onClick={handleSubmitCardCount}>Submit</button>
             </div>
             <div className="cardContainer">
-                {cardsArray}
+                {pokemonArray.map(pokemon => {
+                    return (
+                        <Card pokemon={pokemon} setScore={setScore} generateNewCards={generateNewCards} key={pokemon.id} />
+                    )
+                })}
             </div>
         </div>
     )
