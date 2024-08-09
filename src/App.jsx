@@ -9,6 +9,7 @@ function App() {
     const [pokemonArray, setPokemonArray] = useState([]);
     const [hideOptions, setHideOptions] = useState(false);
     const [options, setOptions] = useState({count: 8, names: false, colors: false, generation: 150});
+    const [darkmode, setDarkmode] = useState(false);
 
     function generateNewCards() {
         let randomSet = new Set([]);
@@ -31,23 +32,51 @@ function App() {
         setPokemonArray(newArray);
     }
 
+    // run on initialization
     useEffect(() => {
         generateNewCards();
     }, []);
 
+    // shuffle card order when score is changed
     useEffect(() => {
         shuffleCards();
+    }, [score]);
+
+    // track high score
+    useEffect(() => {
         if (score > highScore) {
             setHighScore(score);
         }
     }, [score]);
 
+    // generate new pokemon when options are changed
     useEffect(() => {
         generateNewCards();
     }, [options]);
 
+    // detects user's dark mode preference
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        if (mediaQuery.matches) {
+            setDarkmode(mediaQuery.matches);
+        }
+        mediaQuery.addEventListener("change", (e) => (setDarkmode(mediaQuery.matches)));
+    }, []);
+
+    useEffect(() => {
+        darkmode ? document.body.className = "darkmode" : document.body.className = "";
+    }, [darkmode]);
+
     function toggleShowOptions() {
         setHideOptions(!hideOptions);
+    }
+
+    function handleLightmodeButton() {
+        setDarkmode(false);
+    }
+
+    function handleDarkmodeButton() {
+        setDarkmode(true);
     }
 
     return (
@@ -59,14 +88,18 @@ function App() {
                 </div>
                 <ul className="cardContainer">
                     {pokemonArray.map(pokemon => {
-                        return <Card pokemon={pokemon} setScore={setScore} generateNewCards={generateNewCards} options={options} key={pokemon.id} />
+                        return <Card pokemon={pokemon} setScore={setScore} generateNewCards={generateNewCards} options={options} darkmode={darkmode} key={pokemon.id} />
                     })}
                 </ul>
             </div>
             <div className="instructions">Get points by clicking on Pok&eacute;mon, but don't click more than once!</div>
             <div className="optionsContainer">
-                <button type="button" className="toggleOptionsButton" onClick={toggleShowOptions}>Options</button>
-                {hideOptions && <Options options={options} setOptions={setOptions} generateNewCards={generateNewCards} />}
+                <button type="button" className={"toggleOptionsButton" + (darkmode ? " darkmode" : "")} onClick={toggleShowOptions}>Options</button>
+                {hideOptions && <Options options={options} setOptions={setOptions} generateNewCards={generateNewCards} darkmode={darkmode} setDarkmode={setDarkmode} />}
+            </div>
+            <div className="darkmodeToggleContainer">
+                <button type="button" className={"lightmodeButton" + (darkmode ? " darkmode" : "")} onClick={handleLightmodeButton}>Light</button>
+                <button type="button" className={"darkmodeButton" + (darkmode ? " darkmode" : "")} onClick={handleDarkmodeButton}>Dark</button>
             </div>
         </>
     )

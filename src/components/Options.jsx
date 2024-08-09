@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function Options({ options, setOptions }) {
+function Options({ options, setOptions, darkmode, setDarkmode }) {
     const [count, setCount] = useState(options.count);
 
     function handleCardCountChange(e) {
@@ -28,8 +28,8 @@ function Options({ options, setOptions }) {
             <div className="cardCountInputContainer optionItem">
                 <label htmlFor="cardCountInput">Pok&eacute;mon count: (maximum 20)</label>
                 <br />
-                <input id="cardCountInput" type="number" value={count} min="1" max="20" onChange={handleCardCountChange} className="cardCountInput" />
-                <button type="button" onClick={handleSubmitCardCount} className="cardCountSubmit" aria-label="submit card count">Submit</button>
+                <input id="cardCountInput" type="number" value={count} min="1" max="20" onChange={handleCardCountChange} className={"cardCountInput" + (darkmode ? " darkmode" : "")} />
+                <button type="button" onClick={handleSubmitCardCount} className={"cardCountSubmit" + (darkmode ? " darkmode" : "")} aria-label="submit card count">Submit</button>
             </div>
             <div className="optionItem">
                 <input type="checkbox" id="names" checked={options.names} onChange={handleNames} />
@@ -41,7 +41,7 @@ function Options({ options, setOptions }) {
             </div>
             <div className="optionItem">
                 <label htmlFor="generations">Up to:</label>
-                <select name="generations" id="generations" defaultValue={options.generation} onChange={handleGenerations} className="generationsInput">
+                <select name="generations" id="generations" defaultValue={options.generation} onChange={handleGenerations} className={"generationsInput"+ (darkmode ? " darkmode" : "")}>
                     <option value="151">Generation 1</option>
                     <option value="251">Generation 2</option>
                     <option value="386">Generation 3</option>

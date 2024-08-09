@@ -102,86 +102,86 @@ button {
 }
 /* card styling ends */
 
-/* button styling by Pokemon type starts */
-button.normal {
+/* pokemonButton styling by Pokemon type starts */
+.pokemonButton.normal {
   background-color: #A8A77A;
 }
 
-button.fire {
+.pokemonButton.fire {
   background-color: #EE8130;
 }
 
-button.water {
+.pokemonButton.water {
   background-color: #6390F0;
 }
 
-button.electric {
+.pokemonButton.electric {
   background-color: #F7D02C;
 }
 
-button.grass {
+.pokemonButton.grass {
   background-color: #7AC74C;
 }
 
-button.ice {
+.pokemonButton.ice {
   background-color: #96D9D6;
 }
 
-button.fighting {
+.pokemonButton.fighting {
   background-color: #C22E28;
 }
 
-button.poison {
+.pokemonButton.poison {
   background-color: #A33EA1;
 }
 
-button.ground {
+.pokemonButton.ground {
   background-color: #E2BF65;
 }
 
-button.flying {
+.pokemonButton.flying {
   background-color: #A98FF3;
 }
 
-button.psychic {
+.pokemonButton.psychic {
   background-color: #F95587;
 }
 
-button.bug {
+.pokemonButton.bug {
   background-color: #A6B91A;
 }
 
-button.rock {
+.pokemonButton.rock {
   background-color: #B6A136;
 }
 
-button.ghost {
+.pokemonButton.ghost {
   background-color: #735797;
 }
 
-button.dragon {
+.pokemonButton.dragon {
   background-color: #6F35FC;
 }
 
-button.dark {
+.pokemonButton.dark {
   background-color: #705746;
 }
 
-button.steel {
+.pokemonButton.steel {
   background-color: #B7B7CE;
 }
 
-button.fairy {
+.pokemonButton.fairy {
   background-color: #D685AD;
 }
-/* button styling by Pokemon type ends */
+/* pokemonButton styling by Pokemon type ends */
 
 .instructions {
   text-align: center;
   margin: 1rem 0;
 }
 
-/* options styling begins */
+/* options menu styling begins */
 .optionsContainer {
   text-align: center;
   margin: 1rem 0;
@@ -194,9 +194,13 @@ button.fairy {
   margin: 1rem 0;
 }
 
-.toggleOptionsButton:hover .cardCountSubmit:hover {
+.toggleOptionsButton:hover, .cardCountSubmit:hover {
   background: black;
   color: white;
+}
+
+.lightmodeButton, .darkmodeButton {
+  margin: 0 0.25rem;
 }
 
 .cardCountInput {
@@ -210,7 +214,7 @@ button.fairy {
 }
 
 .cardCountInput, .cardCountSubmit {
-  margin-top: 0.2rem;
+  margin: 0.5rem 0.25rem;
 }
 
 .generationsInput {
@@ -224,60 +228,71 @@ input[type="checkbox"] {
   width: 2rem;
   height: 1rem;
 }
-/* options styling ends */
+/* options menu styling ends */
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #181A1B;
-    color: #C1BBCA;
-  }
+/* darkmodeToggle container styling begins */
+.darkmodeToggleContainer {
+  text-align: center;
+}
 
-  .card {
-    filter: contrast(70%);
-    background-color: #181A1B;
-  }
+.lightmodeButton:hover, .darkmodeButton:hover {
+  background: black;
+  color: white;
+}
+/* darkmodeToggle container styling ends*/
+
+/* dark mode styling begins */
+body.darkmode {
+  background-color: #181A1B;
+  color: #C1BBCA;
+}
+
+.card.darkmode {
+  filter: contrast(80%);
+  background-color: #181A1B;
+}
 
   /* pokemonButton with type colors turned on */
-  .pokemonButton {
-    border: 2px solid #e4e4e4;
-  }
+.pokemonButton.darkmode {
+  border: 2px solid #e4e4e4;
+}
 
   /* pokemonButton with type colors turned on */
-  .pokemonButton:hover {
-    filter: brightness(70%);
-  }
+.pokemonButton.darkmode:hover {
+  filter: brightness(125%) contrast(110%);
+}
+
+/* pokemonButton with type colors turned off */
+[class="pokemonButton darkmode"] {
+  color: #C1BBCA;
+}
 
   /* pokemonButton with type colors turned off */
-  [class="pokemonButton"] {
-    color: #C1BBCA;
-  }
-
-    /* pokemonButton with type colors turned off */
-  [class="pokemonButton"]:hover {
-    background-color: #C1BBCA;
-    color: #181A1B;
-    filter: brightness(100%);
-  }
-
-  .toggleOptionsButton, .cardCountSubmit {
-    border: 2px solid #C1BBCA;
-    color: #C1BBCA;
-  }
-
-  .toggleOptionsButton:hover, .cardCountSubmit:hover {
-    background-color: #C1BBCA;
-    color: #181A1B;
-  }
-
-  .cardCountInput {
-    border: 2px solid #C1BBCA;
-    background-color: #C1BBCA;
-    color: #181A1B;
-  }
-
-  .generationsInput {
-    border: 2px solid #C1BBCA;
-    background: #181A1B;
-    color: #C1BBCA;
-  }
+[class="pokemonButton darkmode"]:hover {
+  background-color: #C1BBCA;
+  color: #181A1B;
+  filter: brightness(100%);
 }
+
+.toggleOptionsButton.darkmode, .cardCountSubmit.darkmode, .lightmodeButton.darkmode, .darkmodeButton.darkmode {
+  border: 2px solid #C1BBCA;
+  color: #C1BBCA;
+}
+
+.toggleOptionsButton.darkmode:hover, .cardCountSubmit.darkmode:hover, .lightmodeButton.darkmode:hover, .darkmodeButton.darkmode:hover {
+  background-color: #C1BBCA;
+  color: #181A1B;
+}
+
+.cardCountInput.darkmode {
+  border: 2px solid #C1BBCA;
+  background-color: #C1BBCA;
+  color: #181A1B;
+}
+
+.generationsInput.darkmode {
+  border: 2px solid #C1BBCA;
+  background: #C1BBCA;
+  color: #181A1B;
+}
+/* dark mode styling ends */
