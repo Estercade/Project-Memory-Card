@@ -37,15 +37,31 @@ button {
   padding: 0.5rem;
 }
 
-button:hover {
-  background: black;
-  color: white;
-}
 /* general styling ends */
 
+/* gameboard styling begins */
 .gameboardContainer {
   min-height: 400px;
 }
+
+/* pokemonButton with type colors turned on */
+.pokemonButton:hover {
+  filter: brightness(70%);
+}
+
+/* pokemonButton with type colors turned off */
+[class="pokemonButton"] {
+  border: 2px solid black;
+}
+
+/* pokemonButton with type colors turned off */
+[class="pokemonButton"]:hover {
+  background: black;
+  color: white;
+  filter: brightness(100%);
+}
+
+/* gameboard styling ends */
 
 /* scoreboard styling begins */
 .scoreboard {
@@ -178,6 +194,10 @@ button.fairy {
   margin: 1rem 0;
 }
 
+.toggleOptionsButton:hover .cardCountSubmit:hover {
+  background: black;
+  color: white;
+}
 
 .cardCountInput {
   font-family: "Pokemon GB", sans-serif;
@@ -205,3 +225,59 @@ input[type="checkbox"] {
   height: 1rem;
 }
 /* options styling ends */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #181A1B;
+    color: #C1BBCA;
+  }
+
+  .card {
+    filter: contrast(70%);
+    background-color: #181A1B;
+  }
+
+  /* pokemonButton with type colors turned on */
+  .pokemonButton {
+    border: 2px solid #e4e4e4;
+  }
+
+  /* pokemonButton with type colors turned on */
+  .pokemonButton:hover {
+    filter: brightness(70%);
+  }
+
+  /* pokemonButton with type colors turned off */
+  [class="pokemonButton"] {
+    color: #C1BBCA;
+  }
+
+    /* pokemonButton with type colors turned off */
+  [class="pokemonButton"]:hover {
+    background-color: #C1BBCA;
+    color: #181A1B;
+    filter: brightness(100%);
+  }
+
+  .toggleOptionsButton, .cardCountSubmit {
+    border: 2px solid #C1BBCA;
+    color: #C1BBCA;
+  }
+
+  .toggleOptionsButton:hover, .cardCountSubmit:hover {
+    background-color: #C1BBCA;
+    color: #181A1B;
+  }
+
+  .cardCountInput {
+    border: 2px solid #C1BBCA;
+    background-color: #C1BBCA;
+    color: #181A1B;
+  }
+
+  .generationsInput {
+    border: 2px solid #C1BBCA;
+    background: #181A1B;
+    color: #C1BBCA;
+  }
+}

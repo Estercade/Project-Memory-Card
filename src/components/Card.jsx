@@ -17,7 +17,7 @@ function Card({pokemon, setScore, generateNewCards, options}) {
 
     return (
         <li className="card">
-            <button type="button" value={pokemon.name} onClick={handleSelected} className={options.colors ? pokemon.types[0].type.name : null}>
+            <button type="button" value={pokemon.name} onClick={handleSelected} className={options.colors ? pokemon.types[0].type.name + " pokemonButton" : "pokemonButton"}>
                 <img src={pokemon.sprites.front_default} alt="" className="pokemonSprite" />
                 {options.names && <div className="cardName">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div>}
                 {/* <div className="selected">{pokemon.selected === true ? "selected" : "not selected"}</div> */}

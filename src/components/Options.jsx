@@ -29,7 +29,7 @@ function Options({ options, setOptions }) {
                 <label htmlFor="cardCountInput">Pok&eacute;mon count: (maximum 20)</label>
                 <br />
                 <input id="cardCountInput" type="number" value={count} min="1" max="20" onChange={handleCardCountChange} className="cardCountInput" />
-                <button type="button" onClick={handleSubmitCardCount} className="cardCountSubmit">Submit</button>
+                <button type="button" onClick={handleSubmitCardCount} className="cardCountSubmit" aria-label="submit card count">Submit</button>
             </div>
             <div className="optionItem">
                 <input type="checkbox" id="names" checked={options.names} onChange={handleNames} />
