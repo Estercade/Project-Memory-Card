@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-function Card({pokemon, setScore, generateNewCards}) {
+function Card({pokemon, setScore, generateNewCards, options}) {
     function handleSelected() {
         if (pokemon.selected) {
             setScore(0);
@@ -16,11 +16,13 @@ function Card({pokemon, setScore, generateNewCards}) {
     }
 
     return (
-        <button type="button" value={pokemon.name} onClick={handleSelected} className="card" key={pokemon.id}>
-            <img src={pokemon.sprites.front_default} alt="" />
-            <div className="cardName">{pokemon.name}</div>
-            <div className="selected">{pokemon.selected === true ? "selected" : "not selected"}</div>
-        </button>
+        <li className="card">
+            <button type="button" value={pokemon.name} onClick={handleSelected} className={options.colors ? pokemon.types[0].type.name : null}>
+                <img src={pokemon.sprites.front_default} alt="" className="pokemonSprite" />
+                {options.names && <div className="cardName">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div>}
+                {/* <div className="selected">{pokemon.selected === true ? "selected" : "not selected"}</div> */}
+            </button>
+        </li>
     )
 }
 

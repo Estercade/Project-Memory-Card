@@ -1,23 +1,207 @@
 /* Project Memory Card stylesheet */
 
-/* reset browser defaults */
+/* reset browser defaults starts */
 * {
   padding: 0;
   margin: 0;
-  border: 1px solid red;
 }
 
+ul {
+  list-style: none;
+}
+/* reset browser defaults ends */
+
+/* general styling begins */
+@font-face {
+  font-family: "Pokemon GB";
+  src: local("Pokemon GB"), url(./fonts/PokemonGb-RAeo.ttf);
+}
+
+.root {
+  text-align: center;
+}
+
+body {
+  font-family: "Pokemon GB", sans-serif;
+  padding: 0.5rem;
+}
+
+button {
+  outline: none;
+  border: 2px solid black;
+  border-radius: 3px;
+  background: none;
+  font-family: "Pokemon GB", sans-serif;
+  font-size: 1rem;
+  min-height: 2rem;
+  padding: 0.5rem;
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+/* general styling ends */
+
+.gameboardContainer {
+  min-height: 400px;
+}
+
+/* scoreboard styling begins */
+.scoreboard {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.highScore {
+  margin-left: auto;
+}
+/* scoreboard styling begins */
+
+/* card styling begins */
 .cardContainer {
   display: flex;
-  max-width: 450px;
   flex-wrap: wrap;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 1rem auto;
+  justify-content: center;
+  gap: 3px;
 }
 
 .card {
   display: inline-block;
   min-width: 98px;
+  position: relative;
 }
 
-img {
-  float: left;
+.cardName {
+  font-family: "Pokemon GB", sans-serif;
+  font-size: 0.5rem;
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0;
+  text-align: center;
+  width: 100%;
 }
+/* card styling ends */
+
+/* button styling by Pokemon type starts */
+button.normal {
+  background-color: #A8A77A;
+}
+
+button.fire {
+  background-color: #EE8130;
+}
+
+button.water {
+  background-color: #6390F0;
+}
+
+button.electric {
+  background-color: #F7D02C;
+}
+
+button.grass {
+  background-color: #7AC74C;
+}
+
+button.ice {
+  background-color: #96D9D6;
+}
+
+button.fighting {
+  background-color: #C22E28;
+}
+
+button.poison {
+  background-color: #A33EA1;
+}
+
+button.ground {
+  background-color: #E2BF65;
+}
+
+button.flying {
+  background-color: #A98FF3;
+}
+
+button.psychic {
+  background-color: #F95587;
+}
+
+button.bug {
+  background-color: #A6B91A;
+}
+
+button.rock {
+  background-color: #B6A136;
+}
+
+button.ghost {
+  background-color: #735797;
+}
+
+button.dragon {
+  background-color: #6F35FC;
+}
+
+button.dark {
+  background-color: #705746;
+}
+
+button.steel {
+  background-color: #B7B7CE;
+}
+
+button.fairy {
+  background-color: #D685AD;
+}
+/* button styling by Pokemon type ends */
+
+.instructions {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* options styling begins */
+.optionsContainer {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.optionItem {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+
+.cardCountInput {
+  font-family: "Pokemon GB", sans-serif;
+  border: 2px solid black;
+  border-radius: 3px;
+  min-height: 2rem;
+  width: 3rem;
+  position: relative;
+  top: -0.05rem;
+}
+
+.cardCountInput, .cardCountSubmit {
+  margin-top: 0.2rem;
+}
+
+.generationsInput {
+  font-family: "Pokemon GB", sans-serif;
+  border: 2px solid black;
+  border-radius: 3px;
+  min-height: 2rem;
+}
+
+input[type="checkbox"] {
+  width: 2rem;
+  height: 1rem;
+}
+/* options styling ends */
