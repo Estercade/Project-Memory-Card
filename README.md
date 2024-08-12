@@ -4,7 +4,8 @@ This project was made following the instructions and specifications for The Odin
 
 ## Description
 
-The goal of this project is to create a memory game using React to practice using hooks. The application should allow users to play a game in which they click on cards displayed in a randomized order and score points by avoiding cards they previously selected in that round. Card order should be randomized every time a card is selected and the round should end when a previously selected card is chosen. This program is optimized for use with Google Chrome.
+The goal of this project is to create a memory game using React to practice using hooks. The application should allow users to play a game in which they click on cards displayed in a randomized order and score points by avoiding cards they previously selected in that round. Card order should be randomized every time a card is selected and the round should end when a previously selected card is chosen. This program is optimized for use with Google Chrome.  
+Live demo: https://project-memory-card-8lr.pages.dev/
 
 ### Features
 
